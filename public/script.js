@@ -1,6 +1,6 @@
 /**
 *@author: Judith Bresser, 459 956
-*@version: 5.3,
+*@version: 5.2,
 *
 *@desc Main Method
 *@param  array_with_calculated_distances, array, which includes the values of the distance between two points
