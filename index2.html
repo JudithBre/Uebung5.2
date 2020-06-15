@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="public/style.css" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet-draw/dist/leaflet.draw.css"/>
+	<title>GeoSoftware1 Assignment 5</title>
+</head>
+
+<body>
+	<div class="a" align="center">
+		<h1></a>GeoSoftware1 Assignment 5</h1>
+
+		<div>
+			course: Geosoftware I SoSe 2020 <br>
+			author: Judith Bresser <br> <br>
+
+			On this second page, Leaflet-draw can be used to create geoJSON features, which can then be copied by the user from a text field.
+		</div>
+
+		<br>
+		<br>
+
+		<div id="main" style="overflow: auto;">
+			<div id="mapdiv" style="width: 600px; height: 400px; float: left;"></div>
+			<div id="data">
+				<textarea id="geojsontextarea"></textarea><br />
+			</div>
+		</div>
+
+		<br>
+		<br>
+
+
+	<button type="demo" onclick="getLocation()">use User Location</button>
+
+		<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+		<script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js"></script>
+
+		<script src="public/script.js"> </script>
+		<script src="public/script2.js"> </script>
+	</body>
+
+	</html>
+
+	<!--
+	References:
+	"https://leafletjs.com/examples.html"
+	"https://leafletjs.com/reference-1.6.0.html"
+	"https://leaflet.github.io/Leaflet.draw/docs/leaflet-draw-latest.html"
+-->
