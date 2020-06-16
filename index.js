@@ -21,6 +21,8 @@ const mongodb = require('mongodb');
 const port=3000;
 
 const app = express(); // Express instance
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 /**
 * function which creates a Connection to MongoDB. Retries every 3 seconds if noc connection could be established.

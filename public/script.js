@@ -686,7 +686,8 @@ function getRequest(query) {
 * ´@desc Send Files in textarea to Server to store them
 */
 function sendFiles(){
-  let input= document.getElementById("input").value;
+  var input= document.getElementById("geojsontextarea").value;
+  console.log(input);
   //proof valid json
   try{
     input = JSON.parse(input);
@@ -704,13 +705,14 @@ function sendFiles(){
 * @param dat to store
 */
 function postRequest(dat) {
+ 
 
   console.log(dat)
   return new Promise(function (res, rej) {
     $.ajax({
       url: "/item",
       data: dat,
-      type: "post",
+      type: "POST",
 
       success: function (result) { res(result) },
       error: function (err) { console.log(err) }
