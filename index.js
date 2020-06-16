@@ -16,11 +16,11 @@
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
 
-const express = require('express'); // importiert die express-library
+const express = require('express'); // imports the express library
 const mongodb = require('mongodb');
 const port=3000;
 
-const app = express(); // Express-Instanz, ein App-Objekt wird erstellt
+const app = express(); // Express instance
 
 /**
 * function which creates a Connection to MongoDB. Retries every 3 seconds if noc connection could be established.
@@ -117,4 +117,4 @@ app.delete("/item", (req, res) => {
 // listen on port 3000
 app.listen(port,
   () => console.log(`Example app listening at http://localhost:${port}`)
-  ); // Webserver starten
+  ); // Start web server

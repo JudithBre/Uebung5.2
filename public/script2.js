@@ -1,6 +1,6 @@
 /**
 *@author: Judith Bresser, 459 956
-*@version: 4.2,
+*@version: 5.2,
 *
 * References: https://github.com/streuselcake/jslab
 */
