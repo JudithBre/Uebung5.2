@@ -10,12 +10,12 @@
 </head>
 
 <body>
+	<p> hier werden die Daten aus der Datenbank ausgegeben: </p>
 	<p id=text></p>
-	<textarea id=input></textarea>
+	<!-- 	<textarea id=input></textarea> -->
 	<button onclick="showFiles()">Get Data</button>
-	<button onclick="sendFiles()">Send Data</button>
 
-<br><br>
+	<br><br>
 
 	<div class="a" align="center">
 		<h1> </a>GeoSoftware1 Assignment 5</h1>
@@ -24,53 +24,53 @@
 			course: Geosoftware I SoSe 2020 <br>
 			author: Judith Bresser <br> <br>
 
-	<!--		This page contains a leaflet map that shows the location of the bus stops and the user location. Pop-ups contain information about the respective bus stop.
--->
-		</div>
-		<br><br>
-		<button type="demo" onclick="getLocation()">use User Location</button>
-		<button type="button" onclick="getXHRObject(0)">busstops</button>
-
-		<textarea id="readpoint">insert Point GeoJSON</textarea>
-
-		<p id="demo"></p>
-
-		<table  id = "Table">
-			<tr>
-				<th>Point 1</th>
-				<th>busstop</th>
-				<th>distance in meters</th>
-				<th>bearing</th>
-			</tr>
-		</table>
-		<br>
-		<br>
-
-		<table  id = "Table2">
-			<tr>
-				<th >direction</th>
-				<th >line number</th>
-				<th >arrival time</th>
-				<th >predicted departure time</th>
-				<th >planned departure time</th>
-			</tr>
-		</table>
-
+			<!--		This page contains a leaflet map that shows the location of the bus stops and the user location. Pop-ups contain information about the respective bus stop.
+		-->
 	</div>
+	<br><br>
+	<button type="demo" onclick="getLocation()">use User Location</button>
+	<button type="button" onclick="getXHRObject(0)">busstops</button>
 
+	<textarea id="readpoint">insert Point GeoJSON</textarea>
+
+	<p id="demo"></p>
+
+	<table  id = "Table">
+		<tr>
+			<th>Point 1</th>
+			<th>busstop</th>
+			<th>distance in meters</th>
+			<th>bearing</th>
+		</tr>
+	</table>
 	<br>
 	<br>
 
-	<div id="mapSection" style="width: 600px; height: 400px"></div>
+	<table  id = "Table2">
+		<tr>
+			<th >direction</th>
+			<th >line number</th>
+			<th >arrival time</th>
+			<th >predicted departure time</th>
+			<th >planned departure time</th>
+		</tr>
+	</table>
 
-	<br>
+</div>
 
-	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v1.5.1/leaflet.css" />
-	<script src="http://cdn.leafletjs.com/leaflet/v1.5.1/leaflet.js"></script>
+<br>
+<br>
 
-	<script src="point.js"> </script>
-	<script src="pointcloud.js"> </script>
-	<script src="public/script.js"></script>
+<div id="mapSection" style="width: 600px; height: 400px"></div>
+
+<br>
+
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v1.5.1/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet/v1.5.1/leaflet.js"></script>
+
+<script src="point.js"> </script>
+<script src="pointcloud.js"> </script>
+<script src="public/script.js"></script>
 </body>
 
 </html>

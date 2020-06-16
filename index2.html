@@ -32,10 +32,16 @@
 		</div>
 
 		<br>
-		<br>
+		<p> Add item (POST Request)</p>
+		<!-- <input type="submit" value="Send" /> -->
+		<button onclick="sendFiles()">Send Data</button>
+		<br><br>
 
-
-	<button type="demo" onclick="getLocation()">use User Location</button>
+		<button type="demo" onclick="getLocation()">use User Location</button>
+		<br><br>
+		<textarea id="readpoint">insert Point GeoJSON</textarea>
+		<br><br>
+		<p id="demo"></p>
 
 		<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 		<script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js"></script>

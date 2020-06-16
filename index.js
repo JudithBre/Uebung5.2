@@ -44,6 +44,9 @@ connectMongoDB();
 //Make all Files stored in Folder "public" accessible over localhost:3000/public
 app.use('/public', express.static(__dirname + '/public'));
 
+//Share leaflet over the server
+app.use('/leaflet', express.static(__dirname + '/node_modules/leaflet/dist'));
+
 //Share jquery over the server
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
 
@@ -57,34 +60,58 @@ app.get('/page2', (req,res) => {
   res.sendFile(__dirname + '/index2.html');  // Antwortmethode (File)
 });
 
-//Get-Request to /hello will be answerde with "Hello World"
-app.get('/hello', (req, res) => {
-  res.send('Hello World'); // Antwortmethode (Text)
-});
-
 // res.json({ some: 'json' }) //Antwortmethode (JSON)
 
 //Returns all items stored in collection items
 app.get("/item", (req,res) => {
-    //Search for all items in mongodb
-    app.locals.db.collection('items').find({}).toArray((error, result) => {
-        if (error) {
-            console.dir(error);
-        }
-        res.json(result);
-    });
+  //Search for all items in mongodb
+  console.log("get item " + req.query._id);
+  app.locals.db.collection('items').find({}).toArray((error, result) => {
+    if (error) {
+      console.dir(error);
+    }
+    res.json(result);
+  });
 });
 
 //Handler for Post requests to "/item"
 app.post("/item", (req, res) => {
-    // insert item
-    console.log("insert item " + JSON.stringify(req.body));
-    app.locals.db.collection('items').insertOne(req.body, (error, result) => {
-        if (error) {
-            console.dir(error);
-        }
-        res.json(result);
-    });
+  // insert item
+  console.log("insert item " + JSON.stringify(req.body));
+  app.locals.db.collection('items').insertOne(req.body, (error, result) => {
+    if (error) {
+      console.dir(error);
+    }
+    res.json(result);
+  });
+});
+
+//Handler for Put requests to "/item"
+app.put("/item", (req, res) => {
+  // update item
+  console.log("update item " + req.body._id);
+  let id = req.body._id;
+  delete req.body._id;
+  console.log(req.body); // => { name:req.body.name, description:req.body.description }
+  app.locals.db.collection('item').updateOne({_id:new mongodb.ObjectID(id)}, {$set: req.body}, (error, result) => {
+    if(error){
+      console.dir(error);
+    }
+    res.json(result);
+  });
+});
+
+// Handler for Delete a item from a database
+app.delete("/item", (req, res) => {
+
+  console.log("delete item " + JSON.stringify(req.body));
+  req.body = {_id: new mongodb.ObjectID(req.body.id)};
+  app.locals.db.collection('items').deleteOne(req.body, (error, result) => {
+    if (error) {
+      console.dir(error);
+    }
+    res.json(result);
+  });
 });
 
 // listen on port 3000

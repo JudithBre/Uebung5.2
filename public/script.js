@@ -652,68 +652,68 @@ function changeCoordinates(array){
 ///////////////////////////////////////////////////////////////////////////////////
 
 /**
- * @desc Funktion shows an simple alert.
- */
+* @desc Funktion shows an simple alert.
+*/
 function showAlert(){
-    alert("Button Clicked")
+  alert("Button Clicked")
 }
 
 /**
- * @desc Shows Files stored in Database
- */
+* @desc Shows Files stored in Database
+*/
 async function showFiles() {
-    let query=""// query = ?name=geo
-    let result = await getRequest(query);
-    document.getElementById("text").innerHTML = JSON.stringify(result)
+  let query=""// query = ?name=geo
+  let result = await getRequest(query);
+  document.getElementById("text").innerHTML = JSON.stringify(result)
 }
 
 /**
- * @desc Request data stored in MongoDB and resolves them as promise
- * @param query to filter stored data
- */
+* @desc Request data stored in MongoDB and resolves them as promise
+* @param query to filter stored data
+*/
 function getRequest(query) {
 
-    return new Promise(function (res, rej) {
-        $.ajax({
-            url: "/item " +query,
-            success: function (result) { res(result) },
-            error: function (err) { console.log(err) }
-        });
-    })
+  return new Promise(function (res, rej) {
+    $.ajax({
+      url: "/item " +query,
+      success: function (result) { res(result) },
+      error: function (err) { console.log(err) }
+    });
+  })
 }
 
 /**
- * ´@desc Send Files in textarea to Server to store them
- */
+* ´@desc Send Files in textarea to Server to store them
+*/
 function sendFiles(){
-    let input= document.getElementById("input").value;
-    //proof valid json
-    try{
-        input = JSON.parse(input);
-        postRequest(input)
-    }
-    catch (e){
-        console.log(e);
-        alert("No valid JSON");
-    }
+  let input= document.getElementById("input").value;
+  //proof valid json
+  try{
+    input = JSON.parse(input);
+    postRequest(input)
+  }
+  catch (e){
+    console.log(e);
+    alert("No valid JSON");
+  }
 
 }
 
 /**
- * @desc Sends data to server to get stored in database
- * @param dat to store
- */
+* @desc Sends data to server to get stored in database
+* @param dat to store
+*/
 function postRequest(dat) {
 
-    console.log(dat)
-    return new Promise(function (res, rej) {
-        $.ajax({
-            url: "/item",
-            data: dat,
-            type: "post",
+  console.log(dat)
+  return new Promise(function (res, rej) {
+    $.ajax({
+      url: "/item",
+      data: dat,
+      type: "post",
 
-            success: function (result) { res(result) },
-            error: function (err) { console.log(err) }
-        });
-    })
+      success: function (result) { res(result) },
+      error: function (err) { console.log(err) }
+    });
+  })
 }
