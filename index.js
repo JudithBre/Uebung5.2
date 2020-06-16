@@ -106,8 +106,12 @@ app.put("/item", (req, res) => {
 // Handler for Delete a item from a database
 app.delete("/item", (req, res) => {
 
-  console.log("delete item " + JSON.stringify(req.body));
-  req.body = {_id: new mongodb.ObjectID(req.body.id)};
+  console.log("delete item " + (req.body._id));
+  req.body = {_id: new mongodb.ObjectID(req.body._id)};
+  console.log("mongo id ");
+  
+  console.log(req.body);
+  
   app.locals.db.collection('items').deleteOne(req.body, (error, result) => {
     if (error) {
       console.dir(error);

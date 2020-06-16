@@ -719,3 +719,23 @@ function postRequest(dat) {
     });
   })
 }
+
+function deletedata(){
+  var id= document.getElementById("ID").value;
+  console.log(id);
+  
+
+  return new Promise(function (res, rej) {
+    $.ajax({
+      url: "/item",
+      data: {_id:id},
+      type: "DELETE",
+
+      success: function (result) { res(result) },
+      error: function (err) { console.log(err) }
+    });
+  })
+
+
+
+}
