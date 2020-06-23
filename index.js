@@ -1,6 +1,6 @@
 /**
 *@author: Judith Bresser, 459 956
-*@version: 5.2,
+*@version: 6.0,
 *
 */
 //****various Linter configs****
@@ -49,8 +49,16 @@ app.use('/public', express.static(__dirname + '/public'));
 //Share leaflet over the server
 app.use('/leaflet', express.static(__dirname + '/node_modules/leaflet/dist'));
 
+//Share leaflet-draw over the server
+app.use('/leaflet-draw', express.static(__dirname + '/node_modules/leaflet-draw/dist'));
+
+//Share leaflet-draw over the server
+app.use('/leaflet-heat', express.static(__dirname + '/node_modules/leaflet.heat/dist'));
+
 //Share jquery over the server
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
+
+app.use('/src', express.static(__dirname + ''));
 
 //Send index.html on request to "/"
 app.get('/', (req,res) => {
@@ -109,9 +117,9 @@ app.delete("/item", (req, res) => {
   console.log("delete item " + (req.body._id));
   req.body = {_id: new mongodb.ObjectID(req.body._id)};
   console.log("mongo id ");
-  
+
   console.log(req.body);
-  
+
   app.locals.db.collection('items').deleteOne(req.body, (error, result) => {
     if (error) {
       console.dir(error);

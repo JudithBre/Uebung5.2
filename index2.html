@@ -2,62 +2,106 @@
 <html lang="en">
 
 <head>
+	<title>GeoSoftware1 Assignment 6</title>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<link rel="stylesheet" href="public/style.css" />
-	<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
-	<link rel="stylesheet" href="https://unpkg.com/leaflet-draw/dist/leaflet.draw.css"/>
+
 	<script src="/jquery/jquery.min.js"></script>
-	<title>GeoSoftware1 Assignment 5</title>
+	<link rel="stylesheet" href="../leaflet/leaflet.css" >
+	<link rel="stylesheet" href="https://unpkg.com/leaflet-draw/dist/leaflet.draw.css"/>	<!-- mandatory for leaflet-draw to work, do not delete -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-	<div class="a" align="center">
-		<h1></a>GeoSoftware1 Assignment 5</h1>
 
-		<div>
-			course: Geosoftware I SoSe 2020 <br>
-			author: Judith Bresser <br> <br>
-
-			On this second page, Leaflet-draw can be used to create geoJSON features, which can then be copied by the user from a text field.
-		</div>
-
-		<br>
-		<br>
-
-		<div id="main" style="overflow: auto;">
-			<div id="mapdiv" style="width: 600px; height: 400px; float: left;"></div>
-			<div id="data">
-				<textarea id="geojsontextarea"></textarea><br />
+	<!-- navbar -->
+	<nav class="navbar navbar-expand-md navbar-dark navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand">Menu</a>
 			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li><a href="/">Home</a></li>
+				</li>
+				<li class="active"><a href="/page2">Page2</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<!-- /navbar -->
+
+<div class="a">
+	<div class="jumbotron">
+	<h2><b>GeoSoftware1 Assignment 6</b></h2>
+		course: Geosoftware I SoSe 2020 <br>
+		author: Judith Bresser <br>
+	</div>
+	</div>
+
+<!-- main container -->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-6"  id="mapdiv" style="height: 400px;">
+		</div>
+
+	<br>
+
+	<div class="col-sm-6">
+		<div class="form-group">
+			<label for="geojsontextarea">Add item (POST Request)</label>
+			<textarea class="form-control" id="geojsontextarea" rows="3"></textarea>
+				<button onclick="sendFiles()" class="btn btn-default">Send Data</button>
 		</div>
 
 		<br>
-		<p> Add item (POST Request)</p>
-		<!-- <input type="submit" value="Send" /> -->
-		<button onclick="sendFiles()">Send Data</button>
-		<br><br>
 
-		<button type="demo" onclick="getLocation()">use User Location</button>
-		<button type="demo" onclick="deletedata()">delete point</button>
-		<br><br>
-		<textarea id="readpoint">insert Point GeoJSON</textarea>
-		<textarea id="ID">ID from to deleted point</textarea><br />
-		<br><br>
-		<p id="demo"></p>
+		<div class="form-group">
+			<label for="readpoint">insert Point GeoJSON</label>
+			<textarea class="form-control" id="readpoint" rows="3"></textarea>
+			<button type="demo" onclick="getLocation()" class="btn btn-default">use User Location</button>
+			<br>
+			<p id="demo"></p>
+		</div>
 
-		<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-		<script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js"></script>
+		<br>
 
-		<script src="public/script.js"> </script>
-		<script src="public/script2.js"> </script>
-	</body>
+		<div class="form-group">
+			<label for="ID">ID from to deleted point</label>
+			<textarea class="form-control" id="ID" rows="3"></textarea>
+			<button type="demo" onclick="deletedata()" class="btn btn-default">delete point</button>
+		</div>
+	</div>
+</div>
+<!-- /main container -->
 
-	</html>
+<br><br>
 
-	<!--
-	References:
-	"https://leafletjs.com/examples.html"
-	"https://leafletjs.com/reference-1.6.0.html"
-	"https://leaflet.github.io/Leaflet.draw/docs/leaflet-draw-latest.html"
--->
+<!-- footer -->
+<footer class="container-fluid text-center">
+	<p>Impressum
+		<a rel="nofollow" href="javascript:window.print();">
+			<img class="inline" height="14" width="18" src="//cdn.website-start.de/s/img/cc/printer.gif" alt="Druckversion"/>
+		</a></p>
+		<p>j_bres05@uni-muenster.de
+			<span class="footer-separator">|</span>
+			© Judith Bresser 2020</p>
+		</footer>
+<!-- /footer -->
+
+<script src="/leaflet/leaflet.js"></script>
+<script src="/leaflet-draw/leaflet.draw.js"></script>
+
+<script src="public/script.js"> </script>
+<script src="public/script2.js"> </script>
+
+</body>
+</html>
