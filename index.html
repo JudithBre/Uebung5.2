@@ -5,70 +5,128 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="public/style.css" />
-	<title>GeoSoftware1 Assignment 5</title>
+	<title>GeoSoftware1 Assignment 6</title>
 	<script src="/jquery/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="leaflet-heat.js"></script>
 </head>
 
 <body>
-	<p> hier werden die Daten aus der Datenbank ausgegeben: </p>
-	<p id=text></p>
-	<!-- 	<textarea id=input></textarea> -->
-	<button onclick="showFiles()">Get Data</button>
 
-	<br><br>
-
-	<div class="a" align="center">
-		<h1> </a>GeoSoftware1 Assignment 5</h1>
-
-		<div>
-			course: Geosoftware I SoSe 2020 <br>
-			author: Judith Bresser <br> <br>
-
+	<!-- navbar -->
+	<nav class="navbar navbar-expand-md navbar-dark navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand">Menu</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/">Home</a></li>
+				</li>
+				<li><a href="/page2">Page2</a></li>
+			</ul>
+		</div>
 	</div>
-	<br><br>
-	<button type="demo" onclick="getLocation()">use User Location</button>
-	<button type="button" onclick="getXHRObject(0)">busstops</button>
+</nav>
+<!-- /navbar -->
 
-	<textarea id="readpoint">insert Point GeoJSON</textarea>
+<div class="a">
+	<div class="jumbotron">
+		<h2><b>GeoSoftware1 Assignment 6</b></h2>
+		course: Geosoftware I SoSe 2020 <br>
+		author: Judith Bresser <br>
+	</div>
+	</div>
 
-	<p id="demo"></p>
+<!-- main container -->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-6" id="mapSection" style="height: 400px">
+			</div>
 
-	<table  id = "Table">
-		<tr>
-			<th>Point 1</th>
-			<th>busstop</th>
-			<th>distance in meters</th>
-			<th>bearing</th>
-		</tr>
-	</table>
-	<br>
-	<br>
+			<br>
 
-	<table  id = "Table2">
-		<tr>
-			<th >direction</th>
-			<th >line number</th>
-			<th >arrival time</th>
-			<th >predicted departure time</th>
-			<th >planned departure time</th>
-		</tr>
-	</table>
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="text">Hier werden die Daten aus der Datenbank ausgegeben:</label>
+					<textarea class="form-control" id="text" rows="3"></textarea>
+					<button onclick="showFiles()" class="btn btn-default">Get Data</button>
+				</div>
 
-</div>
+				<br>
 
-<br>
-<br>
+				<div class="form-group">
+					<label for="readpoint">insert Point GeoJSON</label>
+					<textarea class="form-control" id="readpoint" rows="3"></textarea>
+					<div class="btn-group" role="group">
+					<button type="demo" onclick="getLocation()" class="btn btn-default">use User Location</button>
+					<button type="button" onclick="getXHRObject(0)" class="btn btn-default">busstops</button>
+					</div>
+					<p id="demo"></p>
+				</div>
 
-<div id="mapSection" style="width: 600px; height: 400px"></div>
+				<br>
 
-<br>
+				<div class="table-responsive">
+					<table class="table table-striped table-sm" id = "Table">
+						<thead>
+							<tr>
+								<th>Point 1</th>
+								<th>busstop</th>
+								<th>distance in meters</th>
+								<th>bearing</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
 
-<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v1.5.1/leaflet.css" />
-<script src="http://cdn.leafletjs.com/leaflet/v1.5.1/leaflet.js"></script>
+				<br>
 
-<script src="point.js"> </script>
-<script src="pointcloud.js"> </script>
-<script src="public/script.js"></script>
-</body>
+				<div class="table-responsive">
+					<table class="table table-striped table-sm" id = "Table2">
+						<thead>
+							<tr>
+								<th >direction</th>
+								<th >line number</th>
+								<th >arrival time</th>
+								<th >predicted departure time</th>
+								<th >planned departure time</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+<!-- /container -->
 
-</html>
+		<br><br>
+
+<!-- footer -->
+		<footer class="container-fluid text-center">
+			<p>Impressum
+				<a rel="nofollow" href="javascript:window.print();">
+					<img class="inline" height="14" width="18" src="//cdn.website-start.de/s/img/cc/printer.gif" alt="Druckversion"/>
+				</a></p>
+				<p>j_bres05@uni-muenster.de
+					<span class="footer-separator">|</span>
+					© Judith Bresser 2020</p>
+				</footer>
+	<!-- /footer -->
+
+				<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v1.5.1/leaflet.css" />
+				<script src="http://cdn.leafletjs.com/leaflet/v1.5.1/leaflet.js"></script>
+				<script src="public/script.js"></script>
+			</body>
+			</html>

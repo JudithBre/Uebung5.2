@@ -705,7 +705,7 @@ function sendFiles(){
 * @param dat to store
 */
 function postRequest(dat) {
- 
+
 
   console.log(dat)
   return new Promise(function (res, rej) {
@@ -723,7 +723,7 @@ function postRequest(dat) {
 function deletedata(){
   var id= document.getElementById("ID").value;
   console.log(id);
-  
+
 
   return new Promise(function (res, rej) {
     $.ajax({
@@ -739,3 +739,33 @@ function deletedata(){
 
 
 }
+
+///////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////ÜBUNG 6////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+
+/*
+addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
+
+var heat = L.heatLayer(addressPoints).addTo(map);
+
+map.on({
+    movestart: function () { draw = false; },
+    moveend:   function () { draw = true; },
+    mousemove: function (e) {
+        if (draw) {
+            heat.addLatLng(e.latlng);
+        }
+    }
+    
+*/
+
+/*
+  var heat = L.heatLayer([
+  	[50.5, 30.5, 0.2], // lat, lng, intensity
+  	[50.6, 30.4, 0.5],
+  	...
+  ], {radius: 25}).addTo(map);
+
+  */
