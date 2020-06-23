@@ -601,6 +601,7 @@ function convert_unixtime(t) {
 ///////////////////////////////////////////////////////////////////////////////////
 
 var L;
+var layerGroup = L.layerGroup();
 // A map is created and initialized.
 var map = L.map('mapSection').setView([51.96, 7.63], 8);
 L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -623,14 +624,32 @@ function CreatePointForUserPosition(actpos){
 *@desc shows the bus stops on the map  and the pop-ups contain information about the relevant bus stop
 *@param jhaltestellen = a GEOJSON with all bus stops
 */
-function showBusstops(jhaltestellen){
-  //console.log("test"+jhaltestellen);
+async function showBusstops(jhaltestellen){
+jhaltestellen = await getBusstops();
+console.log(jhaltestellen);
   if(typeof jhaltestellen==='string'){jhaltestellen = JSON.parse(jhaltestellen);}
-  for(var i=0;i<jhaltestellen.features.length;i++){
-    L.marker(changeCoordinates(convert_GJSON_to_Array(jhaltestellen,i))).addTo(map)
-    .bindPopup("Name der Haltestelle: "+jhaltestellen.features[i].properties.lbez+" ("+jhaltestellen.features[i].properties.richtung+")"+"<br>"+" Kurzbezeichnung: "+jhaltestellen.features[i].properties.kbez);
+  var heatArray = [];
+  for(var j=0;j<jhaltestellen.features.length;j++){
+    heatArray.push(changeCoordinates(convert_GJSON_to_Array(jhaltestellen,j)));
   }
+  return heatArray;
 }
+
+/**
+*
+*@desc
+*/
+async function makeHeatMap(){
+  console.log("test");
+  var makeHeatLayer = await showBusstops();
+  var heat = L.heatLayer(makeHeatLayer, {radius: 25});
+  var layerGroup = L.layerGroup([heat]);
+  var overlayMaps = {
+    "HeatMap": layerGroup
+};
+L.control.layers(null, overlayMaps).addTo(map);
+}
+
 
 /**
 *
@@ -720,6 +739,24 @@ function postRequest(dat) {
   })
 }
 
+/**
+* @desc
+*
+*/
+async function getBusstops() {
+
+  return new Promise(function (res, rej) {
+    $.ajax({
+      url: "https://rest.busradar.conterra.de/prod/haltestellen",
+      type: "GET",
+
+      success: function (result) { res(result) },
+      error: function (err) { console.log(err) }
+    });
+  })
+}
+
+
 function deletedata(){
   var id= document.getElementById("ID").value;
   console.log(id);
@@ -736,36 +773,9 @@ function deletedata(){
     });
   })
 
-
-
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////ÜBUNG 6////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
-
-/*
-addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
-
-var heat = L.heatLayer(addressPoints).addTo(map);
-
-map.on({
-    movestart: function () { draw = false; },
-    moveend:   function () { draw = true; },
-    mousemove: function (e) {
-        if (draw) {
-            heat.addLatLng(e.latlng);
-        }
-    }
-    
-*/
-
-/*
-  var heat = L.heatLayer([
-  	[50.5, 30.5, 0.2], // lat, lng, intensity
-  	[50.6, 30.4, 0.5],
-  	...
-  ], {radius: 25}).addTo(map);
-
-  */

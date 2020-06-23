@@ -52,6 +52,9 @@ app.use('/leaflet', express.static(__dirname + '/node_modules/leaflet/dist'));
 //Share leaflet-draw over the server
 app.use('/leaflet-draw', express.static(__dirname + '/node_modules/leaflet-draw/dist'));
 
+//Share leaflet-draw over the server
+app.use('/leaflet-heat', express.static(__dirname + '/node_modules/leaflet.heat/dist'));
+
 //Share jquery over the server
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
 
